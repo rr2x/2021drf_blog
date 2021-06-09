@@ -1,0 +1,53 @@
+basic authentication:
+  login, then pass base 64 encoding of user:password,
+  unencrypted and unsecure
+  not efficient, each interaction needs to recheck
+  if credentials are correct
+
+
+session authentication:
+  login, generate session object and store to db
+  return session ID and stored as cookie
+  session ID included on http header
+  stateful during the duration of connection
+  after logging out, session id destroyed
+  problems:
+    - can't support multiple fronts (mobile, web, etc.)
+    - sessions needs to be kept up-to-date
+    - unauthenticated cookie sent every request (inefficient)
+
+
+token authentication:
+  stateless
+  unique token generated and stored by client as cookie or in localStorage
+  token passed on header to verify user authenticity
+  record only kept by server is if token valid
+  cookies and localStorage is vulnerable to XSS attacks
+  best practice: store token in cookie with httpOnly and Secure cookie flags
+
+  example request/response in authentication:
+
+  client:   GET / HTTP/1.1
+  server:   HTTP/1.1 401 Unauthorized
+            WWW-Authenticate: Token
+  client:   GET / HTTP/1.1
+            Authorization: Token 401f.....
+  server:   HTTP/1.1 200 OK
+
+
+
+
+note: when we do changes on config/settings.py INSTALLED_APPS
+we need to execute a migration
+
+use:
+>>> pipenv install dj-rest-auth
+
+127.0.0.1:8000/api/v1/dj-rest-auth/login/
+127.0.0.1:8000/api/v1/dj-rest-auth/logout/
+127.0.0.1:8000/api/v1/dj-rest-auth/password/reset/
+127.0.0.1:8000/api/v1/dj-rest-auth/password/reset/confirm/
+
+>>> pipenv install django-allauth
+
+do another migration after changing settings.
