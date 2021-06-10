@@ -53,3 +53,17 @@ endpoints automatically made by dj-rest-auth:
 >>> pipenv install django-allauth
 
 do another migration after changing settings.
+
+>>> pipenv install pyyaml uritemplate
+
+generation of static schema (if api does not change often):
+>>> py manage.py generateschema > openapi-schema.yml
+
+then update config/urls.py
+
+
+documentation:
+>>> pipenv install drf-yasg
+
+  127.0.0.1:8000/swagger/
+  127.0.0.1:8000/redoc/
