@@ -43,10 +43,12 @@ we need to execute a migration
 use:
 >>> pipenv install dj-rest-auth
 
-127.0.0.1:8000/api/v1/dj-rest-auth/login/
-127.0.0.1:8000/api/v1/dj-rest-auth/logout/
-127.0.0.1:8000/api/v1/dj-rest-auth/password/reset/
-127.0.0.1:8000/api/v1/dj-rest-auth/password/reset/confirm/
+endpoints automatically made by dj-rest-auth:
+  127.0.0.1:8000/api/v1/dj-rest-auth/login/
+  127.0.0.1:8000/api/v1/dj-rest-auth/logout/
+  127.0.0.1:8000/api/v1/dj-rest-auth/password/reset/
+  127.0.0.1:8000/api/v1/dj-rest-auth/password/reset/confirm/
+  127.0.0.1:8000/api/v1/dj-rest-auth/registration
 
 >>> pipenv install django-allauth
 
